@@ -3,6 +3,7 @@
 <html lang = "en">  
     <head>  
         <title> JavaScript Calculator </title>  
+        <link rel="manifest" href="src/manifest.json">
         
         <style>  
         h1 {  
@@ -29,8 +30,6 @@
             padding: 20px;  
         }  
         
-        
-        
         input {  
             width: 20px;  
             background-color: green;
@@ -41,7 +40,6 @@
             margin: 5px;  
             font-size: 15px;  
         }  
-        
         
         #calc {  
             width: 250px;  
@@ -55,7 +53,21 @@
         
     </head>
 
-    <body>  
+    <body> 
+        
+        <script>
+            if ("serviceWorker" in navigator) {
+                console.log("Service Worker supported");
+                navigator.serviceWorker.register("./sw.js").then(ServiceWorkerRegistration => {
+                    console.log("SW Registered");
+                    console.log(ServiceWorkerRegistration);
+                }).catch(error => {
+                    console.log("SW Registration failed");
+                    console.log(error);
+                })
+            }
+        </script>
+        
         <h1> Calculator Program in JavaScript </h1>  
         <div class= "formstyle">  
             <form name = "form1">  
